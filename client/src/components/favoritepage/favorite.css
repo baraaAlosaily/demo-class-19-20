@@ -1,0 +1,39 @@
+.div{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.div-container{
+    display: flex;
+    flex-direction: column;
+
+}
+.div-card{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    height: 31rem;
+   
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .div-card-img{
+    height: 15rem;
+}
+.div-card-title{
+    height: 3rem;
+}
+.div-card-link{
+    height: 5rem;
+}
+
+.div-card-button{
+    margin: 10px 0;
+    height: 3rem;
+} */

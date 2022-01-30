@@ -1,0 +1,17 @@
+.body{
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+}
+.body img{
+  width: 29rem;
+}
+.body div{
+    width: 29rem;
+    border: 1px solid lightgray;
+    padding: 10px;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+}
