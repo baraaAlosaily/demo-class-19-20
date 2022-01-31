@@ -27,7 +27,9 @@ const Home = () => {
     },[]);
 
   return(<div>
+  <div className='title'>
   <h1>Home Page</h1>
+  </div>
   <div className='div'>
     <Container className='div-container'>
       <Row md={3}>

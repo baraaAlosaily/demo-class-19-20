@@ -6,13 +6,19 @@ import UpdateModale from "./updateModal/UpdateModal";
 
 
 const Favoritepage = () => {
+
   const[favInfo,setFavInfo]=useState({})
   const[data,setData]=useState([]);
 
   const [show, setShow] = useState(false);
 
+  const [titleInput,setTitleInput]=useState("");
+  const [imageInput,setImageInput]=useState("");
+  const [commentInput,setCommentInput]=useState("");
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 
   const getAllRecipes=async()=>{
     await axios.get(`https://me-recipe.herokuapp.com/favRecipes`)
@@ -41,7 +47,9 @@ const Favoritepage = () => {
     },[]);
 
   return(<div>
+  <div className='title'>
   <h1>Favorite Recipes</h1>
+  </div>
   <div className='div'>
     <Container className='div-container'>
       <Row md={3}>
@@ -60,7 +68,10 @@ const Favoritepage = () => {
           <Button className='div-card-button'  variant="primary"
           onClick={()=>{
             handleShow();
-            setFavInfo(ele)
+            setFavInfo(ele);
+            setTitleInput(ele.title);
+            setImageInput(ele.image);
+            setCommentInput(ele.comment);
           }
         }
           >Update</Button>
@@ -80,7 +91,19 @@ const Favoritepage = () => {
       </Row>
       </Container>
       {
-        <UpdateModale getAllRecipes={getAllRecipes} favInfo={favInfo} show={show} handleClose={handleClose} handleShow={handleShow}/>
+        <UpdateModale  
+        getAllRecipes={getAllRecipes} 
+        favInfo={favInfo}
+         show={show} 
+         handleClose={handleClose} 
+         handleShow={handleShow}
+         titleInput={titleInput}
+         setTitleInput={setTitleInput}
+         imageInput={imageInput}
+         setImageInput={setImageInput}
+         commentInput={commentInput}
+         setCommentInput={setCommentInput}
+         />
       }
   </div>
   </div>);

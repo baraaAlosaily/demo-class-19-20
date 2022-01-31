@@ -3,10 +3,13 @@ import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import "./updateModale.css"
 import axios from "axios";
-const UpdateModale = ({show,handleClose,favInfo,getAllRecipes}) => {
-  const [titleInput,setTitleInput]=useState(favInfo.title);
-  const [imageInput,setImageInput]=useState(favInfo.image);
-  const [commentInput,setCommentInput]=useState(favInfo.comment);
+const UpdateModale = ({show,handleClose,favInfo,getAllRecipes,
+titleInput,
+setTitleInput,
+imageInput,
+setImageInput,
+commentInput,
+setCommentInput}) => {
 
   const updateRecipesInfo=async(id)=>{
     let newTitle=titleInput;
@@ -33,8 +36,12 @@ const UpdateModale = ({show,handleClose,favInfo,getAllRecipes}) => {
           <Modal.Title>Add It To Favorite</Modal.Title>
         </Modal.Header>
         <Modal.Body className="body">
+          <div>
+           <p>Edite Title</p>
            <input value={titleInput}  onChange={(e)=>setTitleInput(e.target.value)}/>
-           <input value={imageInput}  onChange={(e)=>setImageInput(e.target.value)}/>
+           <p style={{"marginTop":"10px"}}>Edit Image</p>
+           <textarea value={imageInput}  onChange={(e)=>setImageInput(e.target.value)}/>
+           </div>
            <div>
            <label htmlFor="op">Write Your Opinion</label>
            <textarea value={commentInput}  onChange={(e)=>setCommentInput(e.target.value)}  placeholder="Write Your Opinion" type="text" id="op"/>
