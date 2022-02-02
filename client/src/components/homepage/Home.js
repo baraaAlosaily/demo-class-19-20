@@ -26,7 +26,6 @@ const Home = () => {
      }
      getAllRecipes();
     },[]);
-
   return(<div>
   <div className='title'>
   <h1>Home Page</h1>
@@ -36,7 +35,7 @@ const Home = () => {
     <Container className='div-container'>
       <Row md={3}>
       {
-       data && data.map((ele)=>(
+       data.length ? data.map((ele)=>(
         <Col key={ele.id}  md={4}>
         <Card className='div-card'>
         <Card.Img className='div-card-img' variant="top" src={ele.image}/>
@@ -57,7 +56,7 @@ const Home = () => {
         </Card.Body>
       </Card>
         </Col>
-       ))
+       )):<h1>No Recipes Matched You Input Please Enter Valid Input</h1>
       }
       </Row>
       </Container>
