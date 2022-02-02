@@ -3,6 +3,7 @@ import axios from "axios";
 import {Card,Button,Container,Row,Col} from "react-bootstrap";
 import "./home.css";
 import Modalo from './modal/Modalo';
+import SearchBox from './searchbox/SearchBox';
 
 
 const Home = () => {
@@ -30,6 +31,7 @@ const Home = () => {
   <div className='title'>
   <h1>Home Page</h1>
   </div>
+  <SearchBox setData={setData}/>
   <div className='div'>
     <Container className='div-container'>
       <Row md={3}>
