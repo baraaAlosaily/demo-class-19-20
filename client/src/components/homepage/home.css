@@ -4,6 +4,10 @@
     align-items: center;
     justify-content: center;
 }
+.errorMessage{
+    display: flex;
+    justify-content: center;
+}
 .div-container{
     display: flex;
 

@@ -21,7 +21,7 @@ const Favoritepage = () => {
 
 
   const getAllRecipes=async()=>{
-    await axios.get(`https://me-recipe.herokuapp.com/favRecipes`)
+    await axios.get(`${process.env.REACT_APP_BASE_URL}/favRecipes`)
     .then((res)=>{
       console.log(res);
       setData(res.data);
@@ -31,7 +31,7 @@ const Favoritepage = () => {
   }
   
   const deleteFromFavorite=async(id)=>{
-    await axios.delete("https://me-recipe.herokuapp.com/deleteFavRecipe/"+id)
+    await axios.delete(`${process.env.REACT_APP_BASE_URL}/deleteFavRecipe/${id}`)
     .then(()=>{
       getAllRecipes();
       console.log("recipe deleted");

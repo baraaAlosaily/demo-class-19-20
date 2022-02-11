@@ -20,7 +20,7 @@ setCommentInput}) => {
       title:newTitle, readyInMinutes:favInfo.readyInMinutes, summary:favInfo.summary, vegetarian:favInfo.vegetarian, instructions:favInfo.instructions, sourceUrl:favInfo.sourceurl, image:newImage, comment:newComment
     })
     console.log(updatedRecipeData);
-    await axios.put(`https://me-recipe.herokuapp.com/updateFavRecipe/${id}`,updatedRecipeData)
+    await axios.put(`${process.env.REACT_APP_BASE_URL}/updateFavRecipe/${id}`,updatedRecipeData)
     .then(()=>{
       getAllRecipes();
       console.log("updated");

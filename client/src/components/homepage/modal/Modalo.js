@@ -10,7 +10,7 @@ const Modalo = ({show,handleClose,cardInfo}) => {
     let fav=({
       title:cardInfo.title, readyInMinutes:cardInfo.readyInMinutes, summary:cardInfo.summary, vegetarian:cardInfo.vegetarian, instructions:cardInfo.instructions, sourceUrl:cardInfo.sourceUrl, image:cardInfo.image, comment
     })
-    await axios.post(`https://me-recipe.herokuapp.com/addFavRecipe`,fav)
+    await axios.post(`${process.env.REACT_APP_BASE_URL}/addFavRecipe`,fav)
     .then(()=>{
       console.log("posted");
     })

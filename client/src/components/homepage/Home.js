@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from "axios";
+import React, { useEffect,useState } from 'react';
 import {Card,Button,Container,Row,Col} from "react-bootstrap";
 import "./home.css";
 import Modalo from './modal/Modalo';
 import SearchBox from './searchbox/SearchBox';
+import { getAllRecipes } from '../../service';
 
 
 const Home = () => {
@@ -13,19 +13,16 @@ const Home = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
 
-  useEffect(() => {   
-     const getAllRecipes=async()=>{
-       await axios.get(`https://me-recipe.herokuapp.com/recipes`)
-       .then((res)=>{
-         console.log(res);
-         setData(res.data);
-       }).catch((err)=>{
-         console.log(err.message);
-       })
-     }
-     getAllRecipes();
-    },[]);
+  useEffect(() => {  
+    void(async()=>{
+      let data=await getAllRecipes();
+      setData(data);
+    })()
+  },[]);
+
+
   return(<div>
   <div className='title'>
   <h1>Home Page</h1>
@@ -35,7 +32,7 @@ const Home = () => {
     <Container className='div-container'>
       <Row md={3}>
       {
-       data.length ? data.map((ele)=>(
+       data.length &&data.map((ele)=>(
         <Col key={ele.id}  md={4}>
         <Card className='div-card'>
         <Card.Img className='div-card-img' variant="top" src={ele.image}/>
@@ -56,14 +53,18 @@ const Home = () => {
         </Card.Body>
       </Card>
         </Col>
-       )):<h1>No Recipes Matched You Input Please Enter Valid Input</h1>
-      }
+      ))
+     }
       </Row>
       </Container>
+   
       {
         <Modalo cardInfo={cardInfo} show={show} handleClose={handleClose} handleShow={handleShow} />
       }
   </div>
+    { 
+        !data.length && <div className='errorMessage'><h1>No Such Results Match Please Try Again</h1></div>
+    }
   </div>);
 };
 

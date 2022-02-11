@@ -11,7 +11,7 @@ const SearchBox = ({setData}) => {
   const handleFilter=async(e)=>{
       e.preventDefault();
       try {
-        const res=await axios.get(`https://me-recipe.herokuapp.com/searchRecipes?search=${search}`);
+        const res=await axios.get(`${process.env.REACT_APP_BASE_URL}/searchRecipes?search=${search}`);
         setData(res.data);
       } catch (error) {
           console.log(error);
